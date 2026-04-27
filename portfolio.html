@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rahul Saxena — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,600;12..96,700&family=DM+Sans:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --bg: #f5f3ee;
+    --white: #ffffff;
+    --text: #1c1c1c;
+    --muted: #8a8a8a;
+    --border: #e2dfd8;
+    --accent: #1d4ed8;
+    --accent-light: #eff6ff;
+    --green: #15803d;
+    --green-light: #f0fdf4;
+    --tag-bg: #eceae4;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  /* ── LAYOUT ── */
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+    position: sticky; top: 0; z-index: 10;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: -0.3px;
+  }
+  .nav-links {
+    display: flex; gap: 28px; list-style: none;
+  }
+  .nav-links a {
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── HERO ── */
+  .hero {
+    padding: 80px 0 72px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: end;
+  }
+  .hero-eyebrow {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.3px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .hero-eyebrow span {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+  }
+  .hero-heading {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: clamp(40px, 6vw, 64px);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    color: var(--text);
+    margin-bottom: 20px;
+  }
+  .hero-heading em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--muted);
+  }
+  .hero-sub {
+    font-size: 16px;
+    color: #555;
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .hero-cta {
+    display: flex; gap: 12px; flex-wrap: wrap;
+  }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 11px 22px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+  }
+  .btn-primary {
+    background: var(--text);
+    color: #fff;
+  }
+  .btn-primary:hover { background: #333; }
+  .btn-outline {
+    background: transparent;
+    border-color: var(--border);
+    color: var(--text);
+  }
+  .btn-outline:hover { border-color: #bbb; background: var(--white); }
+
+  /* Right side stats */
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+  }
+  .stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 16px 20px;
+    text-align: right;
+    min-width: 160px;
+  }
+  .stat-num {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .stat-label {
+    font-size: 12px;
+    color: var(--muted);
+    line-height: 1.3;
+  }
+
+  /* ── SECTIONS ── */
+  section { padding: 64px 0; border-bottom: 1px solid var(--border); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 40px;
+  }
+  .section-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+  .section-count {
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  /* ── ABOUT ── */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 48px;
+  }
+  .about-text p {
+    color: #555;
+    margin-bottom: 16px;
+    font-size: 15px;
+    line-height: 1.75;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-aside { display: flex; flex-direction: column; gap: 12px; }
+
+  .info-block {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .info-block-label {
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .info-block-value {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text);
+  }
+  .info-block-value.blue { color: var(--accent); }
+  .info-block-value.green { color: var(--green); }
+
+  /* ── PROJECTS ── */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  .project-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+  .project-card:hover {
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    border-color: #ccc;
+  }
+  .project-card.wide { grid-column: span 2; }
+
+  .project-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .project-name {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+  .project-arrow {
+    font-size: 18px;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform 0.2s, color 0.2s;
+  }
+  .project-card:hover .project-arrow {
+    transform: translate(2px, -2px);
+    color: var(--text);
+  }
+  .project-desc {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.65;
+    margin-bottom: 20px;
+    flex: 1;
+  }
+  .project-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: auto;
+  }
+  .project-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    font-size: 11px;
+    font-weight: 500;
+    background: var(--tag-bg);
+    color: #555;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+
+  /* ── SKILLS ── */
+  .skills-layout {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .skill-group {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+  }
+  .skill-group-title {
+    font-family: 'Bricolage Grotesque', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    color: var(--text);
+  }
+  .skill-items { display: flex; flex-wrap: wrap; gap: 7px; }
+  .skill-pill {
+    font-size: 12px;
+    font-weight: 400;
+    padding: 5px 12px;
+    background: var(--tag-bg);
+    border-radius: 20px;
+    color: #444;
+  }
+  .skill-pill.featured {
+    background: var(--accent-light);
+    color: var(--accent);
+  }
+
+  /* ── CONTACT ── */
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+  .contact-text p {
+    font-size: 15px;
+    color: #555;
+    line-height: 1.75;
+    margin-bottom: 14px;
+  }
+  .contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 18px;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  .contact-link:hover {
+    border-color: var(--text);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+  }
+  .contact-link-arrow { color: var(--muted); font-size: 16px; transition: transform 0.2s; }
+  .contact-link:hover .contact-link-arrow { transform: translate(2px,-2px); color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 28px 0;
+    border-top: 1px solid var(--border);
+  }
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  footer p { font-size: 13px; color: var(--muted); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: row; align-items: stretch; }
+    .stat-card { text-align: left; min-width: unset; flex: 1; }
+    .about-grid { grid-template-columns: 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card.wide { grid-column: span 1; }
+    .skills-layout { grid-template-columns: 1fr 1fr; }
+    .contact-wrap { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .footer-inner { flex-direction: column; gap: 4px; }
+  }
+  @media (max-width: 480px) {
+    .skills-layout { grid-template-columns: 1fr; }
+    .hero-stats { flex-direction: column; }
+    .container { padding: 0 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-name">Rahul Saxena</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <p class="hero-eyebrow">
+          <span></span>
+          Available for opportunities
+        </p>
+        <h1 class="hero-heading">
+          Software<br>Engineer <em>&</em><br>Problem Solver
+        </h1>
+        <p class="hero-sub">
+          I build scalable backends and web apps, and spend a lot of time thinking about algorithms. Currently exploring Graph Neural Networks and Deep Learning.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="https://github.com/RahulSAxena2628" target="_blank" class="btn btn-outline">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/rahul-saxena-695343241/" target="_blank" class="btn btn-outline">LinkedIn ↗</a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">1129</div>
+          <div class="stat-label">GATE 2026<br>All India Rank</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">600+</div>
+          <div class="stat-label">LeetCode<br>Problems Solved</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">11</div>
+          <div class="stat-label">GitHub<br>Repositories</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">About Me</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Hey, I'm Rahul — a software engineer from Sangrur, Punjab. I enjoy building things that actually work well under the hood. Whether it's designing a REST API, solving a tricky DP problem, or figuring out how graph-based models learn — I like getting into the details.</p>
+        <p>I cleared GATE 2026 with AIR 1129 in Computer Science, and I've solved 600+ problems on LeetCode, which has sharpened how I think about code and system design.</p>
+        <p>Right now I'm diving deeper into Graph Neural Networks and Deep Learning — the intersection of classical CS and modern AI is where things get interesting for me.</p>
+      </div>
+      <div class="about-aside">
+        <div class="info-block">
+          <div class="info-block-label">Location</div>
+          <div class="info-block-value">Sangrur, Punjab 🇮🇳</div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">GATE 2026</div>
+          <div class="info-block-value blue">AIR 1129 — CS&amp;IT</div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">LeetCode</div>
+          <div class="info-block-value green">600+ Problems Solved</div>
+        </div>
+        <div class="info-block">
+          <div class="info-block-label">Currently Into</div>
+          <div class="info-block-value">Graph Learning · Deep Learning</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Projects</h2>
+      <span class="section-count">5 projects</span>
+    </div>
+    <div class="projects-grid">
+
+      <a href="https://github.com/RahulSAxena2628/job-portal-backend" target="_blank" class="project-card wide">
+        <div class="project-top">
+          <div class="project-name">Job Portal Backend</div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">A full REST API backend for a job portal with three user roles — Admin, Recruiter, and Student. Includes JWT + cookie auth, company registration, job posting, application system, and status management. Clean folder structure with controllers, middlewares, models, and routes.</p>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">Express.js</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">JWT</span>
+            <span class="tag">bcryptjs</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/RahulSAxena2628/Major-Project" target="_blank" class="project-card">
+        <div class="project-top">
+          <div class="project-name">Major Project</div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Full-stack web application using Node.js with EJS for server-side rendering, MongoDB for data models, and custom CSS for styling.</p>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag">Node.js</span>
+            <span class="tag">EJS</span>
+            <span class="tag">MongoDB</span>
+            <span class="tag">CSS</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/RahulSAxena2628/weatherApp" target="_blank" class="project-card">
+        <div class="project-top">
+          <div class="project-name">Weather App</div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Real-time weather app that fetches live data by location using a weather API. Clean and responsive UI.</p>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">CSS</span>
+            <span class="tag">API</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/RahulSAxena2628/News-app" target="_blank" class="project-card">
+        <div class="project-top">
+          <div class="project-name">News App</div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">Categorized news aggregator that pulls articles from a live news API with a lightweight and fast interface.</p>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag">JavaScript</span>
+            <span class="tag">CSS</span>
+            <span class="tag">News API</span>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://github.com/RahulSAxena2628/Naturegallary" target="_blank" class="project-card">
+        <div class="project-top">
+          <div class="project-name">Nature Gallery</div>
+          <span class="project-arrow">↗</span>
+        </div>
+        <p class="project-desc">A responsive photo gallery with clean grid layouts built in plain HTML and CSS. Focus on visual presentation and layout craft.</p>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="tag">HTML</span>
+            <span class="tag">CSS</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-layout">
+      <div class="skill-group">
+        <div class="skill-group-title">Languages</div>
+        <div class="skill-items">
+          <span class="skill-pill featured">C++</span>
+          <span class="skill-pill featured">Java</span>
+          <span class="skill-pill">JavaScript</span>
+          <span class="skill-pill">HTML</span>
+          <span class="skill-pill">CSS</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">Backend & Database</div>
+        <div class="skill-items">
+          <span class="skill-pill">Node.js</span>
+          <span class="skill-pill">Express.js</span>
+          <span class="skill-pill">MongoDB</span>
+          <span class="skill-pill">Mongoose</span>
+          <span class="skill-pill">JWT Auth</span>
+          <span class="skill-pill">REST APIs</span>
+          <span class="skill-pill">bcryptjs</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">CS & AI/ML</div>
+        <div class="skill-items">
+          <span class="skill-pill featured">DSA</span>
+          <span class="skill-pill">Algorithms</span>
+          <span class="skill-pill">Graph Learning</span>
+          <span class="skill-pill">Deep Learning</span>
+          <span class="skill-pill">AI/ML</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-header">
+      <h2 class="section-title">Let's Connect</h2>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-text">
+        <p>I'm open to full-time roles, internships, research collaborations, or just a good conversation about tech, DSA, or AI/ML.</p>
+        <p>Reach out on LinkedIn or check out my work on GitHub and LeetCode.</p>
+      </div>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/rahul-saxena-695343241/" target="_blank" class="contact-link">
+          <span>LinkedIn</span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+        <a href="https://github.com/RahulSAxena2628" target="_blank" class="contact-link">
+          <span>GitHub</span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+        <a href="https://leetcode.com/u/codewithgate28/" target="_blank" class="contact-link">
+          <span>LeetCode — codewithgate28</span>
+          <span class="contact-link-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <p>© 2026 Rahul Saxena</p>
+      <p>Sangrur, Punjab · India</p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
